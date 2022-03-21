@@ -1,0 +1,21 @@
+<h2>商品詳細</h2>
+<tr>
+    <th>商品名</th>
+    <th><%= @item.name %></th>
+</tr>
+<tr>
+    <th>商品説明</th>
+    <th><%= @item.introduction %></th>
+</tr>
+<tr>
+    <th>ジャンル</th>
+    <th><%= @item.genre_id %></th>
+</tr>
+<tr>
+    <th>税込価格（税抜き価格）</th>
+    <th><%= @item.price %>
+    <td>(<%= item.with_tax_price%>)</td></th>
+</tr>
+<%= link_to "edit", edit_admin_path(iterm) %>
+
+c
