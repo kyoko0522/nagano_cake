@@ -1,0 +1,34 @@
+<h2>注文情報入力</h2>
+
+
+<%= form_with model:@order, url:'/orders/confirm', method: :post, local:true do |f| %>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+
+
+<%= f.radio_button :address, "customer_address" %>
+<%= f.label :address, "ご自身の住所" %>
+<%= @customer.postal_code %>
+<%= @customer.address %>
+<%= @customer.first_name %>
+
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<% end %>
+
+<%= form_with model:@new_address,url:'/addresses', method: :post, local:true do |f| %>
+
+<%= f.radio_button :address, "new_address" %>
+<%= f.label :address, "新しいお届け先" %>
+<%= f.text_field :postal_code, :placeholder => "0000000" %>
+  <%= f.text_field :address, :placeholder => "東京都渋谷区代々木" %>
+  <%= f.text_area :name, :placeholder => "令和道子"%>
+
+  <%= f.submit '確認画面へ進む' %>
+
+<% end %>
+
+
+

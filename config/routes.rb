@@ -32,9 +32,8 @@ scope module: :public do
   resources :customers, only:[:show, :edit, :update]
   get "/customers/exit" => "customers#exit"
   patch "/customers/withdraw" => "customers#withdraw"
-  resources :cart_items, only:[:index, :update, :create]
-  patch "/cart_items/:id" => "cart_items#destroy"
   delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+  resources :cart_items, only:[:index, :update, :create, :destroy]
   resources :orders, only:[:new, :index, :show, :create]
   get "/orders/complete" => "orders#complete"
   post "/orders/comfirm" => "orders#comfirm"

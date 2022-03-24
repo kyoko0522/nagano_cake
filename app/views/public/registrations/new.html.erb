@@ -40,11 +40,10 @@
   </tr>
   
 <tr>
-    <td>パスワード（6文字以上）</td>
     <td><div class="field">
-    <%= f.label :password %>
+    <%= f.label :パスワード %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div></td>
