@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :reject_inactive_customer, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,4 +25,12 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def reject_inactive_customer
+    @customer = Customer.find(params[:id])
+    if @customer
+      if @customer.deleted_password?(params[:id]) && !@customer.is_deleted
+        redirect_to new_customer_session_path
+      end
+    end
+  end
 end

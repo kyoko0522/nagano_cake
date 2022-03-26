@@ -1,11 +1,6 @@
-<h2><%= @customer.first_name, last_name %>さんの会員情報</h2>
-<%= form_with model:@customer, local: true do |f| %>
+<h2>会員情報編集</h2>
 <tbody>
-    <tr>
-    <td>会員ID</td>
-    <td><%= customer.id %></td>
-    </tr>
-
+    <%= form_with model:@customer, local: true do |f| %>
     <tr>
         <td>氏名</td>
         <td><%= f.text_field :first_name %></td>
@@ -33,7 +28,8 @@
         <td><<%= f.text_field :email %>/td>
     </tr>
     <tr>
-      <td><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
+      <td><%= f.submit '編集内容を保存', class: "btn btn-sm btn-success" %></td>
+      <td><%= link_to'退会する', customer_exit_path(@customer), class: "btn btn-sm btn-danger" %></td>
      </tr>
 <% end %>
 </tbody>
