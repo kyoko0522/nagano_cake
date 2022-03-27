@@ -1,9 +1,8 @@
 class Public::CustomersController < ApplicationController
 
 def show
-    @customer = Customer.find(params[:id])
-    @address = @customer.address
-    @order = @customer.order
+    @customer = current_customer
+    
 end
 
 def edit
@@ -11,13 +10,13 @@ def edit
 end
 
 def update
-  customer = Customer.find(paramas[:id])
-  customer.update
+  customer = Customer.find(params[:id])
+  customer.update(customer_params)
   redirect_to customer_path(customer)
 end
 
 def exit
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
 end
 
 def withdraw
