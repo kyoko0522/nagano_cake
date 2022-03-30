@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
 def index
     @orders = current_customer.orders
 end
-    
+
 def new
     @customer = current_customer
     @order = Order.new
@@ -18,16 +18,18 @@ end
 
 def create
    @order = Order.new(order_params)
+   @order.customer_id = current_customer.id
    @order.save
    redirect_to orders_complete_path
 end
-    
+
 def confirm
     @current_customer_cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
+
+    # @order.name = current_customer.first_name + current_customer.last_name
     @total = 0
 end
 
@@ -40,5 +42,5 @@ def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
 end
 
-    
+
 end
