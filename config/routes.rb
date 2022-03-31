@@ -41,6 +41,7 @@ scope module: :public do
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 namespace :admin do
+  get "/" => "homes#top"
   resources :items
   resources :customers, only:[:index, :show, :edit, :update]
 end
