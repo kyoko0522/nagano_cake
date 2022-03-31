@@ -26,12 +26,13 @@ end
 def update
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
-    redirect_to cart_items_path(cart_item)
+    render :index
+
 end
 
 private
 def cart_item_params
-    require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount)
 end
 
 end
