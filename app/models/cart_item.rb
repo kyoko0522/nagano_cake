@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
      belongs_to :customer
      belongs_to :item
- def sum_price
-  item.taxin_price*amount
+ def subtotal
+    item.with_tax_price * amount
 end
 end

@@ -2,6 +2,8 @@ class Public::OrdersController < ApplicationController
  before_action :authenticate_customer!
 def index
     @orders = current_customer.orders
+    @total = 0
+    @tota_pay = @total + 800
 end
 
 def new
@@ -27,7 +29,7 @@ def create
        order_detail.item_id = cart_item.id
        order_detail.order_id = @order.id
        order_detail.amount = cart_item.amount
-       order_detail.order.item.price = cart_item.price
+       order.order_detail.item.price = cart_item.price
        order_detail.save
    end
    redirect_to orders_complete_path
@@ -41,8 +43,9 @@ def create
 def confirm
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    # @order.name = current_customer.first_name + current_customer.last_name
+    @order.name = current_customer.first_name + current_customer.last_name
     @total = 0
+    @tota_pay = @total + 800
 	  @order.payment_method = params[:order][:payment_method]
 
 	  if params[:order][:address_number] == "0"
@@ -65,8 +68,7 @@ def confirm
   	end
   	else
   	  redirect_to orders_complete_path
-        end
-      @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+    end
    end
 
 
@@ -76,7 +78,7 @@ end
 
 private
 def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :total_price)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :total_price, :amount)
 end
 
 def address_params
