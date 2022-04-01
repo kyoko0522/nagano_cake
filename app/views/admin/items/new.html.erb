@@ -1,19 +1,38 @@
-<h2>商品新規登録</h2>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-8 offset-md-2">
+<div class ="w-25 p-2 m-3" style ="background-color: #eee;">商品新規登録</div>
+
 <%= form_with model:@item, url: admin_items_path, method: :post,  local:true do |f| %>
+<table>
+
 <tr>
-  <td>商品画像</td>
+  <th>商品画像</th>
   <td><%= f.attachment_field :image %>
 </tr>
+
 <tr>
-  <td>商品名</td>
-  <%= f.text_field :name %></td>
- </tr>S
-   <td>商品説明
-   <%= f.text_area:introduction %></td>
- </ul> 
- <ul>
-    <td>税込価格
-    <%= f.text_field :price %>円</td>
-    <%= f.submit '新規登録' %>
-</ul>
+  <th>商品名</th>
+  <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+   <th>商品説明</th>
+   <td><%= f.text_area:introduction %></td>
+</tr>
+
+<tr>
+    <th>税込価格</th>
+    <td><%= f.text_field :price %>円</td>
+</tr>
+<tr>
+   <td></td>
+   <td><%= f.submit '新規登録',class: "btn btn-sm btn-success" %></td>
+</tr>
+
+
 <% end %>
+</table>
+</div>
+</div>
+</div>
+</div>

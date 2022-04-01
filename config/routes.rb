@@ -44,6 +44,7 @@ namespace :admin do
   get "/" => "homes#top"
   resources :items
   resources :customers, only:[:index, :show, :edit, :update]
+  resources :orders, only:[:show]
 end
 
 end

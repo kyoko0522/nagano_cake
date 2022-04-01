@@ -13,7 +13,7 @@
 <tr>
     <td>配送先</td>
     <td><%= @order.postal_code %></td>
-    <td><%= @rrder.address %></td>
+    <td><%= @order.address %></td>
     <td><%= @order.name %></td>
 </tr>
 
@@ -37,7 +37,7 @@
 <tbody>
     <% @order_details.each do |order_detail| %>
   <tr>
-    <td><%= .id %></td>
+    <td><%#= order.id %></td>
     <td><%= order_detail.item.with_tax_price %></td>
     <th><%= order_detail.amount %></th>
     <td><%= order_detail.subtotal %></td>
