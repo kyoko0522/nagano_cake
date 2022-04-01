@@ -15,15 +15,15 @@ def edit
 end
 
 def update
-    customer = Customer(customer_params)
-    customer.update
-    redirect_to show
+    customer = Customer.find(params[:id])
+    customer.update(customer_params)
+    redirect_to admin_customer_path(customer.id)
 end
 
 private
 
 def customer_params
-    params.require(:customer).permit(:first_name, :last_name,:first_name_kana, :last_name_kana, :postal_code, :adress, :email,)
+    params.require(:customer).permit(:first_name, :last_name,:first_name_kana, :last_name_kana, :postal_code, :adress, :email, :is_deleted)
 end
 
 
