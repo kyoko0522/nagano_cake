@@ -1,10 +1,15 @@
-<h2>新規会員登録</h2>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-10 offset-md-1">
+<div class ="w-25 p-2 m-3" style ="background-color:  #eee;;">
+<h3>新規会員登録</h3>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
   <%= render "public/shared/error_messages", resource: resource %>
-  
-  <tbody>
+  <table>
+
   <tr>
     <td>名前</td>
     <td>（姓）</td>
@@ -12,7 +17,7 @@
     <td>(名）</td>
     <td><%= f.text_field :last_name %></td>
   </tr>
-  
+
   <tr>
     <td>フリガナ</td>
     <td>（セイ）</td>
@@ -22,48 +27,61 @@
   </tr>
 
   <tr>
+    <th></th>
     <td>メールアドレス</td>
     <td> <div class="field">
-    <%= f.label :email %><br />
+    <%#= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div></td>
   </tr>
-  
+
   <tr>
+    <th></th>
     <td>郵便番号（ハイフンなし）</td>
     <td><%= f.text_field :postal_code %></td>
   </tr>
-  
+
   <tr>
+    <th></th>
     <td>電話番号（ハイフンなし）</td>
     <td><%= f.text_field :telephone_number %></td>
   </tr>
-  
+
 <tr>
-    <td><div class="field">
-    <%= f.label :パスワード %>
+    <th></th>
+    <div class="field">
+    <td>パスワード (6文字以上)</td>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div></td>
+    <% @minimum_password_length %>
+    <% end %>
+   <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+  </div>
 </tr>
-  
+
 <tr>
+    <th></th>
     <td>パスワード（確認用）</td>
     <td><div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%#= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div></td>
 </tr>
-</tbody>
+<tr>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <td>
   <div class="actions">
-    <%= f.submit "新規登録" %>
+    <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
   </div>
+  </td>
+</tr>
 <% end %>
-
-<p>既に登録済みの方</p>
-<%= link_to "こちら", new_customer_session_path %>
-
-
+<tr>
+<td>既に登録済みの方</td>
+<td><%= link_to "こちら", new_customer_session_path %></td>
+</tr>
+</table>
 <%#= render "admins/shared/links" %>
