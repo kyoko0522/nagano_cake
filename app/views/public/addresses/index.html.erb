@@ -1,20 +1,25 @@
-<h2>配送先登録/一覧</h2>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-8 offset-md-2">
+<div class ="w-25 p-2 m-3" style ="background-color: #eee;">配送先登録/一覧</div>
 <%= form_with model:@new_address, local:true do |f| %>
+<table>
 <tbody>
 <tr>
-    <td>郵便番号（ハイフンなし）</td>
+    <th>郵便番号（ハイフンなし）</th>
     <td> <%= f.text_field :postal_code, :placeholder => "0000000" %></td>
 </tr>
 <tr>
-    <td>住所</td>
+    <th>住所</th>
     <td> <%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %></td>
 </tr>
 <tr>
-    <td>宛名</td>
+    <th>宛名</th>
     <td> <%= f.text_field :name, :placeholder => "令和道子" %></td>
     <td> <%= f.submit '新規登録', class: "btn btn-sm btn-success" %></td>
 <% end %>
 </tr>
+</table>
 <table class="table table-hover table-inverse">
 <thead>
         <tr>
@@ -39,9 +44,8 @@
 
 </tbody>
 
-
+</tbody>
 
 </table>
 
 
-</tbody>
