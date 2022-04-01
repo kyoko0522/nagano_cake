@@ -10,3 +10,17 @@
 購入には会員登録が必要です.</p>
 
 <h2>新着商品</h2>
+
+<table>
+  <tr><% @items.each do |item| %>
+      <td>
+        <%= link_to item_path(item.id) do %>
+        <p><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg' %></p>
+        <% end %>
+        <p><%= item.name %></p>
+        <p>¥<%= item.price %></p>
+
+       <% end %>
+      </td>
+    </tr>
+</table>

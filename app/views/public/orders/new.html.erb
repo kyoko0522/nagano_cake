@@ -1,4 +1,5 @@
 <h2>注文情報入力</h2>
+<table>
 <tbody>
 <tr>
 <%= form_with model:@order, url:'/orders/confirm', method: :post, local:true do |f| %>
@@ -30,7 +31,6 @@
 <%= f.submit '確認画面へ進む', class: "btn btn-sm btn-success" %>
 <% end %>
 </tbody>
-
-
+</table>
 
 

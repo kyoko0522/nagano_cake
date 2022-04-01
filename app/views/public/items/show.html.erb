@@ -1,7 +1,15 @@
-<tbody>
-  <tr>
-<td><%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "jpg"%></td>
-<td><%= @item.name %>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-8 offset-md-2">
+<div class="row">
+<div class="col-md-3 ">
+<td><%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "jpg"%></td>
+</div>
+
+<div class="col-md-5 ">
+<tr>
+<td>
+  <%= @item.name %>
     <%= @item.introduction %>
     ¥<%= @item.price %>
     <%= form_with model:@cart_item, url:'/cart_items', method: :post, local:true do |f| %>
@@ -12,5 +20,11 @@
       <%= f.submit "カートに入れる" %>
 <% end %>
 </td>
-  </tr>
-</tbody>
+</tr>
+</div>
+
+
+
+</div>
+</div>
+</div>
