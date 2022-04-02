@@ -1,27 +1,32 @@
-<h2>注文履歴詳細</h2>
-
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-8 offset-md-2">
+<div class ="w-25 p-2 m-3" style ="background-color: #eee;">注文履歴詳細</div>
+<table>
 <tr>
-    <td>購入者</td>
-    <td><%= @order.name %></td>
+    <th>購入者</th>
+    <td><%= link_to @order.name, admin_customer_path(@customer.id) %></td>
 </tr>
 
 <tr>
-    <td>注文日</td>
-    <td><%= @order.created_at %></td>
+    <th>注文日</th>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
 </tr>
 
 <tr>
-    <td>配送先</td>
-    <td><%= @order.postal_code %></td>
+    <th>配送先</th>
+    <td>〒<%= @order.postal_code %></td>
+    <td></td>
     <td><%= @order.address %></td>
+    <td></td>
     <td><%= @order.name %></td>
 </tr>
 
 <tr>
-    <td>支払い方法</td>
+    <th>支払い方法</th>
     <td><%= @order.payment_method %></td>
 </tr>
-
+</table>
 
 <table class="table table-hover table-inverse">
     <thead>
@@ -37,12 +42,24 @@
 <tbody>
     <% @order_details.each do |order_detail| %>
   <tr>
-    <td><%= order_detail.order_id %></td>
+    <td><%= order_detail.item.name %></td>
     <td><%= order_detail.item.with_tax_price %></td>
     <th><%= order_detail.amount %></th>
-    <td><%= order_detail.item.subtotal %></td>
-   </tr>
+     <% @total +=  order_detail.item.with_tax_price * order_detail.amount %>
+   <% @total_pay = @total + 800 %>
 　　<% end %>
+　　<td><%= @total %></td>
+   </tr>
 
 </tbody>
 </table>
+<table>
+    <tr>
+    <th>商品合計</th><td></td>
+    <th>送料</th><td>800円</td>
+    <th>請求合計金額</th><td></td>
+    </tr>
+</table>
+</div>
+</div>
+</div>
