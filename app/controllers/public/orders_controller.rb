@@ -14,7 +14,7 @@ def new
 end
 
 def show
-    @order = Order.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
     @total = 0
 end
 
