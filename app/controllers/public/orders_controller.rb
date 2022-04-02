@@ -3,7 +3,6 @@ class Public::OrdersController < ApplicationController
 def index
     @orders = current_customer.orders
     @total = 0
-    @tota_pay = @total + 800
 end
 
 def new

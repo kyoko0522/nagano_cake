@@ -26,18 +26,20 @@
     </thead>
 
 <tbody>
-      <% @order.order_details.all.each do |order| %>
+      <% @order.order_details.each do |order| %>
   <tr>
     <td><%= order.item.name %></td>
     <td><%= order.item.with_tax_price %></td>
-    <td><%= order.item.amount %></td>
-    <td><%= order.item.subtotal %></td>
-   </tr>
-   <% @total +=  order.item.subtotal %>
+    <td><%= order.amount %></td>
+    <% @total +=  order.item.with_tax_price %>
    <% @total_pay = @total + 800 %>
 　　<% end %>
+　　<td><%= @total %></td>
+   </tr>
 
 </tbody>
+</table>
+<table>
 
 <tr>
     <th>商品合計</th><td><%= @total %></td>
