@@ -15,7 +15,7 @@ end
 
 def show
     @order = Order.find(params[:id])
-    @order_details = @customer.order
+    @total = 0
 end
 
 
@@ -24,16 +24,16 @@ def create
    @order = current_customer.orders.new(order_params)
    @order.customer_id = current_customer.id
    if  @order.save
-      cart_items.each do |cart|
-      order_detail = OrdeDetail.new
+      @cart_items.each do |cart|
+      order_detail = OrderDetail.new
       order_detail.item_id = cart.item_id
       order_detail.order_id = @order.id
       order_detail.amount = cart.amount
-      order_detail.price = cart.price
+      order_detail.price = cart.item.price
       order_detail.save
       end
        redirect_to orders_complete_path
-       cart_item.destroy_all
+       @cart_items.destroy_all
    else
        @order = Order.new(order_params)
       render :new

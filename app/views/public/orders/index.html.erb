@@ -15,11 +15,11 @@
 <tbody>
     <% @orders.each do |order| %>
   <tr>
-    <td><%= order.created_at %></td>
+    <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
     <td><%= order.address %></td>
-    <% order.order_detail.item.with_tax_price%>
-    <% order.order_detail.item.subtotal%>
-    <% @total +=  order.order_details.item.subtotal %>
+    <%# order.order_detail.item.with_tax_price%>
+    <%# order.order_detail.item.subtotal%>
+    <%# @total +=  order.order_details.item.subtotal %>
     <td><%= @total_pay %></td>
     <td></td>
     <td><%= link_to "表示する", order_path(order.id) %></td>
