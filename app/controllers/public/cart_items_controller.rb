@@ -20,26 +20,22 @@ end
  end
 
 def create
-    if @cart_item.blank?
-    @cart_item  = current_customer.cart_items.build(item_id: params[:item_id])
+    cart_item = CartItem.new(cart_item_params)
+    before_cart_item = current_customer.cart_items.find_by(item_id: cart_item.item_id)
+    if   before_cart_item.nil?
+         cart_item.customer_id = current_customer.id
+         cart_item.save
+    else
+        new_amount = before_cart_item.amount + cart_item.amount
+        before_cart_item.update_attribute(:amount, new_amount)
     end
-    @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart_item|
-        if cart_item.item_id == @cart_item.item_id
-            new_amount = cart_item.amount + @cart_item.amount
-            cart_item.update_attribute(:amount, new_amount)
-            @cart_item.delete
-        end
-    end
-    @cart_item.amount += params[:amount].to_i
-    @cart_item.save
     redirect_to cart_items_path
 
 end
 
 def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(amount: params[:amount].to_i)
+    cart_item.update(amount: params[:cart_item][:amount].to_i)
     redirect_to cart_items_path
 
 end

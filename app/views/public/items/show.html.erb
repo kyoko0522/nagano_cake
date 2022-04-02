@@ -11,7 +11,7 @@
     <%= @item.introduction %>
     ¥<%= @item.price %>
     <%= form_with model:@cart_item, url:'/cart_items', method: :post, local:true do |f| %>
-      <%= f.select :amount, *[1..3] %>
+      <%= f.select :amount, *[1..5] %>
         <%#= f.hidden_field :customer_id, :value => current_customer.id %>
 
       <%= f.hidden_field :item_id, :value => @item.id %>

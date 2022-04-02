@@ -45,6 +45,7 @@ namespace :admin do
   resources :items
   resources :customers, only:[:index, :show, :edit, :update]
   resources :orders, only:[:show]
+  put "/order_details/:id" => "order_details#update"
 end
 
 end

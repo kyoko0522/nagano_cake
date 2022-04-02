@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
 
  def show
      @order = Order.find(params[:id])
-     @order_details = o
+     @order_details = order_detail.order
  end
 
 end
