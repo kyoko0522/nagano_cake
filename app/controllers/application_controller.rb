@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
 
-  
+
 
 
 

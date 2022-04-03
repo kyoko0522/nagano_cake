@@ -52,7 +52,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
-  #   super(resource)
+  #   customer_path(resource)
   # end
 
   # The path used after sign up for inactive accounts.
@@ -60,7 +60,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
-  
+
   def customer_params
      params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email)
   end

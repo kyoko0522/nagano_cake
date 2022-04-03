@@ -45,7 +45,7 @@ def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
 end
 
-def setup_cart_item!
-    @cart_item = current_cart_items.find_by(item_id: params[:item_id])
-end
+# def setup_cart_item!
+#     @cart_item = current_cart_items.find_by(item_id: params[:item_id])
+# end
 end
