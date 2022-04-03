@@ -47,19 +47,15 @@ def confirm
     @tota_pay = @total + 800
 	  @order.payment_method = params[:order][:payment_method]
 
-  if params[:order][:address_number] == "0"
+  if params[:address_number] == "0"
 	     @order.postal_code = current_customer.postal_code
 	     @order.address = current_customer.address
 	     @order.name  = current_customer.first_name + current_customer.last_name
-  elsif params[:order][:addres_number] == "1"
-		 if Address.exists?(name: params[:order][:registered])
-		   @order.postal_code = Address.find(params[:order][:registered]).postal_code
-	 	   @order.address = Address.find(params[:order][:registered]).address
-		   @order.name = Address.find(params[:order][:registered]).name
-		 else
-		   render :new
-		 end
-  elsif params[:order][:address_number] == "2"
+  elsif params[:address_number] == "1"
+		   @order.postal_code = Address.find(params[:address_id]).postal_code
+	 	   @order.address = Address.find(params[:address_id]).address
+		   @order.name = Address.find(params[:address_id]).name
+  elsif params[:address_number] == "2"
       @order.postal_code = params[:order][:postal_code]
       @order.address  = params[:order][:address]
       @order.name = params[:order][:name]

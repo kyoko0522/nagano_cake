@@ -19,7 +19,7 @@
   <tr>
     <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order.id) %></td>
     <th><%= order.name %></th>
-    <th><%#= order.order_detail.item.amount %></th>
+    <th><%#= order.order_details.item.amount %></th>
 
    </tr>
 　　<% end %>
