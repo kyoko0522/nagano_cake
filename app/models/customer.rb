@@ -8,4 +8,9 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   validates :is_deleted, inclusion: { in: [true, false] }
+  
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 end

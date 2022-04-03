@@ -21,7 +21,7 @@ end
 
 def withdraw
   @customer = current_customer
-  @customer.update(is_deleted: false)
+  @customer.update(is_deleted: true)
   reset_session
   redirect_to root_path
 end

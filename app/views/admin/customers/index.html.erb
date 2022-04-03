@@ -20,7 +20,7 @@
     <td><%= customer.id %></td>
     <th><%= link_to customer.first_name, admin_customer_path(customer.id), class: 'widelink' %></th>
     <th><%= customer.email %></th>
-    <th><%= customer.is_deleted ? '有効':'退会' %></th>
+    <th><%= customer.is_deleted ? '退会' :'有効'%></th>
 
    </tr>
 　　<% end %>
