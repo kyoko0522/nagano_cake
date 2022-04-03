@@ -2,23 +2,26 @@
 <div class="row">
 <div class="col-md-8 offset-md-2">
 
-
+<div class="col-5">
 <td><%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "jpg"%></td>
-
+<table>
 <tr>
-<td>
-  <%= @item.name %>
-    <%= @item.introduction %>
-    ¥<%= @item.price %>
+<td><h2><%= @item.name %></h2></td>
+</tr>
+<tr>
+<td><h3><%= @item.introduction %></h3></td>
+</tr>
+
+<td><h4>¥<%= @item.price %></h4></td>
     <%= form_with model:@cart_item, url:'/cart_items', method: :post, local:true do |f| %>
-      <%= f.select :amount, *[1..5] %>
+<td><h4><%= f.select :amount, *[1..5] %></h4></td>
         <%#= f.hidden_field :customer_id, :value => current_customer.id %>
 
       <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.submit "カートに入れる" %>
+<td><%= f.submit "カートに入れる",class: "btn btn-sm btn-success" %></td>
 <% end %>
-</td>
 </tr>
+</table>
 </div>
 </div>
 </div>
