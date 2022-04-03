@@ -44,7 +44,7 @@ def confirm
     @order = Order.new(order_params)
     @order.name = current_customer.first_name + current_customer.last_name
     @total = 0
-    @tota_pay = @total + 800
+    @tota_price = @total + 800
 	  @order.payment_method = params[:order][:payment_method]
 
   if params[:address_number] == "0"

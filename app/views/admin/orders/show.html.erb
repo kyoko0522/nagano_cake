@@ -24,7 +24,7 @@
 
 <tr>
     <th>支払い方法</th>
-    <td><%= @order.payment_method %></td>
+    <td><%= @order.payment_method_i18n %></td>
 </tr>
 </table>
 
@@ -55,9 +55,10 @@
 </table>
 <table>
     <tr>
-    <th>商品合計</th><td></td>
+    <th>商品合計</th><td><%= @order.total_price %></td>
     <th>送料</th><td>800円</td>
-    <th>請求合計金額</th><td></td>
+    <% @pay = @order.total_price + 800 %>
+    <th>請求合計金額</th><td><%= @pay %></td>
     </tr>
 </table>
 </div>
