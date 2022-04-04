@@ -13,11 +13,6 @@
     <tr><th>支払い方法</th><td><%= @order.payment_method_i18n %></td></tr>
 </table>
 
-<table class="table table-bordered">
-    <tr><th>商品合計</th><td><%= @order.total_price %></td></tr>
-    <tr><th>配送料</th><td>800</td></tr>
-    <tr><th>ご請求額</th><td><%= @total %></td></tr>
-</table>
 
 <table class="table table-bordered">
     <thead>
@@ -35,21 +30,18 @@
     <td><%= order.item.name %></td>
     <td><%= order.item.with_tax_price %></td>
     <td><%= order.amount %></td>
-    <% @total +=  order.item.with_tax_price %>
-   <% @total_pay = @total + 800 %>
+    <% @subtotal = order.item.with_tax_price * order.amount %>
+    　<td><%= @subtotal %></td>
+    <% @total += order.item.with_tax_price * order.amount %>
 　　<% end %>
-　　<td><%= @total %></td>
    </tr>
-
 </tbody>
 </table>
-<table class="table table-bordered">
 
-<tr>
-    <th>商品合計</th><td><%= @total_price %></td>
-    <th>配送料</th><td>800</td>
-    <th>ご請求額</th><td><%= @total_p %></td>
-</tr>
+<table class="table table-bordered">
+    <tr><th>商品合計</th><td><%= @total %></td></tr>
+    <tr><th>配送料</th><td>800</td></tr>
+    <tr><th>ご請求額</th><td><%= @order.total_price %></td></tr>
 </table>
 </div>
 </div>

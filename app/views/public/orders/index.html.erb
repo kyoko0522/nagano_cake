@@ -21,17 +21,16 @@
     <% @orders.each do |order| %>
   <tr>
     <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-    <td><%= order.address %></td>
-    <% order.order_details.each do |order_detail| %>
+    <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
+     <% order.order_details.each do |order_detail| %>
     <td><%= order_detail.item.name %></td>
-    <% order_detail.item.with_tax_price%>
-
-    <% @total +=  order_detail.item.with_tax_price %>
-    <% @total_pay = @total + 800 %>
+    <%# order_detail.item.with_tax_price%>
+    <%# @total +=  order_detail.item.with_tax_price %>
+    <%# @total_pay = @total + 800 %>
+    <td><%= order.total_price %></td>
     <% end %>
 
-    <td><%= @total_pay %></td>
-    <td></td>
+
     <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></td>
    </tr>
 <% end %>

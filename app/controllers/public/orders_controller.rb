@@ -45,20 +45,20 @@ def confirm
     @order.name = current_customer.first_name + current_customer.last_name
     @total = 0
     @tota_price = @total + 800
-	  @order.payment_method = params[:order][:payment_method]
+	@order.payment_method = params[:order][:payment_method]
 
   if params[:address_number] == "0"
 	     @order.postal_code = current_customer.postal_code
 	     @order.address = current_customer.address
 	     @order.name  = current_customer.first_name + current_customer.last_name
   elsif params[:address_number] == "1"
-		   @order.postal_code = Address.find(params[:address_id]).postal_code
-	 	   @order.address = Address.find(params[:address_id]).address
-		   @order.name = Address.find(params[:address_id]).name
+		 @order.postal_code = Address.find(params[:address_id]).postal_code
+	 	 @order.address = Address.find(params[:address_id]).address
+		 @order.name = Address.find(params[:address_id]).name
   elsif params[:address_number] == "2"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address  = params[:order][:address]
-      @order.name = params[:order][:name]
+         @order.postal_code = params[:order][:postal_code]
+         @order.address  = params[:order][:address]
+         @order.name = params[:order][:name]
   else
   	  render :new
   end
