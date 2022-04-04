@@ -2,32 +2,31 @@
     <div class="row">
       <div class="col-md-10 offset-md-1 row ">
 
-        <div class="col-4">
-         <td><%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "jpg"%></td>
-        </div>
+         <div class="col-4">
+          <td><%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "jpg"%></td>
+         </div>
 
-          <div class="col-8">
-         <table>
-
-          <tr>
-           <td><h2><%= @item.name %></h2></td>
-          </tr>
-
-          <tr>
-           <td><h3><%= @item.introduction %></h3></td>
-          </tr>
-
-        <tr>
-         <td><h4>¥<%= @item.with_tax_price%>(税込)</h4></td>
+         <div class="col-8">
           <%= form_with model:@cart_item, url:'/cart_items', method: :post, local:true do |f| %>
-         <td><h4><%= f.select :amount, *[1..5] %></h4></td>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-       <td><%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
-       <% end %></td>
+          <table>
 
-      </tr>
-       </table>
-       </div>
-      </div>
+           <tr>
+            <td><h2><%= @item.name %></h2></td>
+           </tr>
+
+           <tr>
+            <td><h3><%= @item.introduction %></h3></td>
+           </tr>
+            <tr>
+             <td><h4>¥<%= @item.with_tax_price%>(税込)</h4></td>
+             <td><h4><%= f.select :amount, *[1..5] %></h4></td>
+             <%= f.hidden_field :item_id, :value => @item.id %>
+             <td><%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
+             </td>
+            </tr>
+           </table>
+           <% end %>
+          </div>
+         </div>
     </div>
-  </div>
+ </div>
