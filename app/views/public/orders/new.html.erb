@@ -27,7 +27,7 @@
 <p>
 <%= radio_button_tag :address_number, 1 %>
 <%= f.label :address_number_1, "登録済住所から選択" %>
-<%= select_tag :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<%= select_tag :address_id, options_from_collection_for_select(current_customer.addresses, :id, :full_address) %>
 </p>
 <table>
 <p>

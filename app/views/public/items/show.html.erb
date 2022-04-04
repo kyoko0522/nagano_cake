@@ -6,16 +6,16 @@
          <td><%= attachment_image_tag @item, :image, :fill, 300, 200, fallback: "jpg"%></td>
         </div>
 
-     <div class="col-8">
-      <table>
+          <div class="col-8">
+         <table>
 
-        <tr>
-         <td><h2><%= @item.name %></h2></td>
-        </tr>
+          <tr>
+           <td><h2><%= @item.name %></h2></td>
+          </tr>
 
-        <tr>
-         <td><h3><%= @item.introduction %></h3></td>
-        </tr>
+          <tr>
+           <td><h3><%= @item.introduction %></h3></td>
+          </tr>
 
         <tr>
          <td><h4>¥<%= @item.with_tax_price%>(税込)</h4></td>
@@ -26,8 +26,8 @@
        <% end %></td>
 
       </tr>
-    </table>
-   </div>
-   </div>
-   </div>
+       </table>
+       </div>
+      </div>
+    </div>
   </div>
